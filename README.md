@@ -2,7 +2,7 @@
 
 ## UniversityRESTSolution
 
-### Instructions for Local Migration:
+### Instructions for Local Migration of Test Data for API:
 
 To migrate the entities driving this API to your local database, follow these steps:
 
