@@ -14,9 +14,9 @@ namespace UniversityRankingAPI.Models.Entities
         public string region { get; set; }
         public Location(string city, string country, string region)
         {
-            city = this.city;
-            country = this.country;
-            region = this.region;
+            this.city = city;
+            this.country = country;
+            this.region = region;
         }
     }
 }
