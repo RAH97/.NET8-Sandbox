@@ -40,13 +40,20 @@ namespace WebApplication1.Controllers
                 UniversityData[] paginatedData = new UniversityData[perPage];
                 //pull range of results, start at index:(zero-indexed page number * results per page), add requested amount of results per page to paginated result.
                 dataPage.CopyTo(0, paginatedData, (perPage * pageNumber), perPage);
+
+                var paginatedSorted = paginatedData.OrderByDescending(x => x.score).ToList();
+                for(int i = 1; i <= paginatedSorted.Count; i++)
+                {
+                    paginatedSorted[i - 1].rank_display = i.ToString();
+                }
+
                 return new UniversityDataPage()
                 {
                     page = 0,
                     per_page = perPage,
                     total = dataPage.Count,
                     totlPages = 1,
-                    data = dataPage.ToList()
+                    data = paginatedSorted
                 };
             }
         }

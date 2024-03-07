@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityRankingAPI", "UniversityRESTAPI\UniversityRankingAPI.csproj", "{6335AC90-75D5-4D56-AC3D-4479564790B6}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonUniversityDataRESTClient", "PythonUniversityDataRESTClient\PythonUniversityDataRESTClient.pyproj", "{E098D1CE-B587-4EA6-95C6-D5DA0674675A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{6335AC90-75D5-4D56-AC3D-4479564790B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6335AC90-75D5-4D56-AC3D-4479564790B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6335AC90-75D5-4D56-AC3D-4479564790B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E098D1CE-B587-4EA6-95C6-D5DA0674675A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E098D1CE-B587-4EA6-95C6-D5DA0674675A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

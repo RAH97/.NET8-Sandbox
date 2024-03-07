@@ -1,4 +1,5 @@
 ﻿using EFCore.BulkExtensions;
+using Microsoft.EntityFrameworkCore;
 using UniversityRankingAPI.Models.Entities;
 
 namespace UniversityRankingAPI.Migrations
@@ -13,6 +14,12 @@ namespace UniversityRankingAPI.Migrations
 
         public async Task InsertMockUniversityData()
         {
+            //Delete mock data if relic data exists in mock tables.
+            int deleted = this._context.UniversityData.ExecuteDelete();
+            int locationDeleted = this._context.UniversityData.ExecuteDelete();
+            await this._context.SaveChangesAsync();
+
+            //Create mock data.
             List<UniversityData> datas = new List<UniversityData>()
             {
                 new UniversityData()
