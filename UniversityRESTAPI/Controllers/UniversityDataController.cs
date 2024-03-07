@@ -22,7 +22,9 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<UniversityDataPage> Get(int pageNumber, int perPage)
         {
-            var dataPage = await this._context.UniversityData.ToListAsync();
+            var dataPage = await this._context.UniversityData
+                 .Include(data => data.location)
+                 .ToListAsync();
             var nonPaginatedSorted = this.OrderDatasByScore(dataPage);
 
             //If user requeseted more items per page than what we have available, return entire contents of table.
