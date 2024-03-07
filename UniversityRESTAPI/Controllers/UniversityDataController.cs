@@ -35,26 +35,25 @@ namespace WebApplication1.Controllers
                     page = 0,
                     per_page = dataPage.Count,
                     total = dataPage.Count,
-                    totlPages = 1,
+                    total_pages = 1,
                     data = nonPaginatedSorted.ToList()
                 };
 
             }
             else
             {
-                UniversityData[] paginatedData = new UniversityData[perPage];
+                
                 //pull range of results, start at index:(zero-indexed page number * results per page), add requested amount of results per page to paginated result.
-                dataPage.CopyTo(0, paginatedData, (perPage * pageNumber), perPage);
+                var paginatedData =dataPage.Skip(perPage * pageNumber).Take(perPage).ToList();
                 var paginatedSorted = this.OrderDatasByScore(paginatedData);
-
-
-
+                int roundedPageCount = (dataPage.Count / perPage);
+                int numPages = (dataPage.Count %  perPage > 0) ? roundedPageCount + 1 : roundedPageCount;
                 return new UniversityDataPage()
                 {
                     page = 0,
                     per_page = perPage,
                     total = dataPage.Count,
-                    totlPages = 1,
+                    total_pages = numPages,
                     data = paginatedSorted
                 };
             }
