@@ -5,8 +5,7 @@
     <ProjectGuid>e098d1ce-b587-4ea6-95c6-d5da0674675a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>PythonUniversityDataRESTClient.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <SearchPath>..\..\..\..\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\Scripts</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PythonUniversityDataRESTClient</Name>
