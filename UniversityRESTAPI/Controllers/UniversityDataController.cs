@@ -23,7 +23,10 @@ namespace WebApplication1.Controllers
         public async Task<UniversityDataPage> Get(int pageNumber, int perPage)
         {
             var dataPage = await this._context.UniversityData.ToListAsync();
-            if(perPage > dataPage.Count)
+            var nonPaginatedSorted = this.OrderDatasByScore(dataPage);
+
+            //If user requeseted more items per page than what we have available, return entire contents of table.
+            if (perPage > dataPage.Count)
             {
                 return new UniversityDataPage()
                 {
@@ -31,7 +34,7 @@ namespace WebApplication1.Controllers
                     per_page = dataPage.Count,
                     total = dataPage.Count,
                     totlPages = 1,
-                    data = dataPage.ToList()
+                    data = nonPaginatedSorted.ToList()
                 };
 
             }
@@ -40,12 +43,9 @@ namespace WebApplication1.Controllers
                 UniversityData[] paginatedData = new UniversityData[perPage];
                 //pull range of results, start at index:(zero-indexed page number * results per page), add requested amount of results per page to paginated result.
                 dataPage.CopyTo(0, paginatedData, (perPage * pageNumber), perPage);
+                var paginatedSorted = this.OrderDatasByScore(paginatedData);
 
-                var paginatedSorted = paginatedData.OrderByDescending(x => x.score).ToList();
-                for(int i = 1; i <= paginatedSorted.Count; i++)
-                {
-                    paginatedSorted[i - 1].rank_display = i.ToString();
-                }
+
 
                 return new UniversityDataPage()
                 {
@@ -56,6 +56,16 @@ namespace WebApplication1.Controllers
                     data = paginatedSorted
                 };
             }
+        }
+
+        private List<UniversityData> OrderDatasByScore(IEnumerable<UniversityData> datas)
+        {
+            var sorted = datas.OrderByDescending(x => x.score).ToList();
+            for (int i = 1; i <= sorted.Count; i++)
+            {
+                sorted[i - 1].rank_display = i.ToString();
+            }
+            return sorted;
         }
     }
 }
