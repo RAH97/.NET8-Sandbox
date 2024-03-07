@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<UniversityContext>(options => 
                              options.UseSqlServer(builder.Configuration.GetConnectionString("UniversityDataContext")));
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -22,6 +24,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+await PopulateDatabase();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -30,7 +34,6 @@ app.MapControllers();
 
 app.Run();
 
-await PopulateDatabase();
 
 
  async Task PopulateDatabase()

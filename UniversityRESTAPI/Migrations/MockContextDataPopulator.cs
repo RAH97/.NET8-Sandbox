@@ -190,7 +190,7 @@ namespace UniversityRankingAPI.Migrations
                         rank_display = ""
                     },
             };
-
+            await this._context.BulkInsertAsync(datas.Select(x => x.location).ToList(), type: typeof(Location));
             await this._context.BulkInsertAsync(datas, type: typeof(UniversityData));
         }
     }
