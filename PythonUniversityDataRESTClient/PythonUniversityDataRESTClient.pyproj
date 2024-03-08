@@ -10,6 +10,9 @@
     <OutputPath>.</OutputPath>
     <Name>PythonUniversityDataRESTClient</Name>
     <RootNamespace>PythonUniversityDataRESTClient</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>United States</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

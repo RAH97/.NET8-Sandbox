@@ -42,10 +42,7 @@ app.Run();
     {
         var service = scope.ServiceProvider;
         var context = service.GetService<UniversityContext>();
-#pragma warning disable CS8604 // Possible null reference argument.
         MockContextDataPopulator mocker = new MockContextDataPopulator(context);
-#pragma warning restore CS8604 // Possible null reference argument.
-
         await mocker.InsertMockUniversityData();
 
     }
